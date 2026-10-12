@@ -1,45 +1,44 @@
+
 package com.hcl.placement.student;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentRepository {
-
     private List<Student> students = new ArrayList<>();
 
-    public void save(Student student) {
+    public boolean addStudent(Student student) {
+        for (Student s : students) {
+            if (s.getId() == student.getId()
+                    || s.getRegisterNumber().equalsIgnoreCase(
+                            student.getRegisterNumber())) {
+                return false;
+            }
+        }
+
         students.add(student);
+        return true;
     }
 
-    public Student findByStudentId(long studentId) {
+    public void displayStudents() {
+        if (students.isEmpty()) {
+            System.out.println("No students registered.");
+            return;
+        }
 
         for (Student student : students) {
-
-            if (student.getStudentId() == studentId) {
-                return student;
-            }
+            student.display();
         }
-
-        return null;
     }
-
-    public Student findByRegisterNumber(String registerNumber) {
-
-        if (registerNumber == null) {
-            return null;
+    public Student findStudent(int id) {
+    for (Student student : students) {
+        if (student.getId() == id) {
+            return student;
         }
-
-        String searchRegisterNumber = registerNumber.trim();
-
-        for (Student student : students) {
-
-            if (student.getRegisterNumber()
-                    .equalsIgnoreCase(searchRegisterNumber)) {
-
-                return student;
-            }
-        }
-
-        return null;
     }
+    return null;
+}
+public int getStudentCount() {
+    return students.size();
+}
 }

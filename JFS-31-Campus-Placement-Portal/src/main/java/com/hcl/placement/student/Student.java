@@ -1,77 +1,50 @@
+
 package com.hcl.placement.student;
 
 public class Student {
-
-    private long studentId;
-    private long userId;
+    private int id;
+    private String name;
     private String registerNumber;
     private String branch;
-    private int year;
     private double cgpa;
     private int backlogs;
 
-    public Student(long studentId, long userId,
-                   String registerNumber, String branch,
-                   int year, double cgpa, int backlogs) {
-
-        this.studentId = studentId;
-        this.userId = userId;
+    public Student(int id, String name, String registerNumber,
+                   String branch, double cgpa, int backlogs) {
+        this.id = id;
+        this.name = name;
         this.registerNumber = registerNumber;
         this.branch = branch;
-        this.year = year;
         this.cgpa = cgpa;
         this.backlogs = backlogs;
     }
 
-    public long getStudentId() {
-        return studentId;
-    }
-
-    public long getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
     public String getRegisterNumber() {
         return registerNumber;
     }
-
     public String getBranch() {
-        return branch;
-    }
+    return branch;
+}
 
-    public int getYear() {
-        return year;
-    }
+public double getCgpa() {
+    return cgpa;
+}
 
-    public double getCgpa() {
-        return cgpa;
-    }
+public int getBacklogs() {
+    return backlogs;
+}
 
-    public int getBacklogs() {
-        return backlogs;
-    }
-
-    public void displayStudent() {
-
-        System.out.println("Student ID: " + studentId);
-        System.out.println("User ID: " + userId);
+    public void display() {
+        System.out.println("\n--- Student Details ---");
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
         System.out.println("Register Number: " + registerNumber);
         System.out.println("Branch: " + branch);
-        System.out.println("Year: " + year);
         System.out.println("CGPA: " + cgpa);
         System.out.println("Backlogs: " + backlogs);
     }
-    public void updateProfile(
-        String registerNumber,
-        String branch,
-        int year,
-        double cgpa,
-        int backlogs) {
-
-    this.registerNumber = registerNumber;
-    this.branch = branch;
-    this.year = year;
-    this.cgpa = cgpa;
-    this.backlogs = backlogs;
-}
 }
