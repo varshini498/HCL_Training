@@ -19,3 +19,6 @@ This project practises Java inheritance, polymorphism, and Git branching.
 - Feature branches
 - Merge conflicts
 - Conflict resolution
+
+## Rebase Practice
+This section was added on the rebase practice branch.
