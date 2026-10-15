@@ -4,8 +4,6 @@ import java.nio.file.*;
 import java.util.*;
 
 public class GenericToolkit {
-
-    // 1. Generic Pair: stores two values of different types
     static class Pair<K, V> {
         K key;
         V value;
@@ -20,7 +18,6 @@ public class GenericToolkit {
         }
     }
 
-    // 2. Bounded generic class: accepts Number types only
     static class Box<T extends Number> {
         T value;
 
@@ -33,12 +30,10 @@ public class GenericToolkit {
         }
     }
 
-    // 3. Generic method: finds the maximum value
     static <T extends Comparable<T>> T max(T a, T b) {
         return a.compareTo(b) >= 0 ? a : b;
     }
 
-    // 4. Wildcard: reads Number values
     static double sum(List<? extends Number> numbers) {
         double total = 0;
         for (Number n : numbers)
@@ -46,14 +41,13 @@ public class GenericToolkit {
         return total;
     }
 
-    // 5. Wildcard: adds integers to a suitable list
     static void addNumbers(List<? super Integer> list) {
         list.add(10);
         list.add(20);
         list.add(30);
     }
 
-    // 6. AutoCloseable resource
+   
     static class MyResource implements AutoCloseable {
         String name;
 
