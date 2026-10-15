@@ -17,10 +17,8 @@ public abstract class Payment {
         return amount;
     }
 
-    // Child classes must implement this method
     public abstract void processPayment();
 
-    // Common method shared by all payment types
     public void printReceipt() {
         System.out.println("Payment amount: Rs. " + amount);
     }
