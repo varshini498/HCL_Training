@@ -6,7 +6,6 @@ public class StringExperiment {
 
     public static void main(String[] args) {
 
-        // String concatenation
         long start = System.nanoTime();
         String text = "";
 
@@ -17,7 +16,7 @@ public class StringExperiment {
         long stringTime = System.nanoTime() - start;
         result = text.length();
 
-        // StringBuilder
+    
         start = System.nanoTime();
         StringBuilder builder = new StringBuilder();
 
