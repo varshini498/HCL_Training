@@ -15,12 +15,11 @@ public class EmployeeDirectory {
             this.salary = salary;
         }
 
-        // Natural sorting: employee ID in ascending order
+    
         public int compareTo(Employee e) {
             return Integer.compare(this.id, e.id);
         }
 
-        // Employees are equal when their IDs are equal
         public boolean equals(Object obj) {
             if (this == obj) return true;
             if (!(obj instanceof Employee)) return false;
@@ -38,7 +37,7 @@ public class EmployeeDirectory {
         }
     }
 
-    // Demonstrates the bug: equals() without hashCode()
+
     static class EmployeeBug {
         int id;
 
@@ -64,7 +63,7 @@ public class EmployeeDirectory {
             new Employee(107, "Karthik", "IT", 75000)
         ));
 
-        // 1. HashMap: employee lookup by ID
+
         System.out.println("=== EMPLOYEE LOOKUP ===");
 
         Map<Integer, Employee> employeeMap = new HashMap<>();
@@ -75,7 +74,7 @@ public class EmployeeDirectory {
         System.out.println("Employee 103: " + employeeMap.get(103));
         System.out.println("Employee 999: " + employeeMap.get(999));
 
-        // 2. LinkedHashMap + merge(): department frequency
+
         System.out.println("\n=== DEPARTMENT FREQUENCY ===");
 
         Map<String, Integer> frequency = new LinkedHashMap<>();
@@ -84,8 +83,6 @@ public class EmployeeDirectory {
             frequency.merge(e.department, 1, Integer::sum);
 
         System.out.println(frequency);
-
-        // 3. TreeMap: sorted department report
         System.out.println("\n=== DEPARTMENT REPORT ===");
 
         Map<String, List<Employee>> report = new TreeMap<>();
@@ -101,7 +98,6 @@ public class EmployeeDirectory {
                 System.out.println("  " + e);
         }
 
-        // 4. Comparable: sort employees by ID
         System.out.println("\n=== SORT BY EMPLOYEE ID ===");
 
         List<Employee> byId = new ArrayList<>(employees);
@@ -110,7 +106,6 @@ public class EmployeeDirectory {
         for (Employee e : byId)
             System.out.println(e);
 
-        // 5. Comparator 1: salary descending, then name ascending
         System.out.println("\n=== TOP 5 SALARIES ===");
 
         Comparator<Employee> salaryOrder =
@@ -123,7 +118,6 @@ public class EmployeeDirectory {
             .limit(5)
             .forEach(System.out::println);
 
-        // 6. Comparator 2: department, then salary descending
         System.out.println("\n=== DEPARTMENT AND SALARY ORDER ===");
 
         Comparator<Employee> departmentOrder =
@@ -138,7 +132,6 @@ public class EmployeeDirectory {
             .sorted(departmentOrder)
             .forEach(System.out::println);
 
-        // 7. equals() / hashCode() contract bug
         System.out.println("\n=== HASHCODE BUG DEMO ===");
 
         Set<EmployeeBug> buggySet = new HashSet<>();
@@ -148,7 +141,7 @@ public class EmployeeDirectory {
         System.out.println("Buggy set size: " + buggySet.size()
                 + " (often 2 because hashCode is missing)");
 
-        // Fixed Employee implements both equals() and hashCode()
+    
         Set<Employee> fixedSet = new HashSet<>();
         fixedSet.add(new Employee(101, "Arun", "HR", 45000));
         fixedSet.add(new Employee(101, "Arun", "HR", 45000));
